@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Факультет правничих наук НаУКМА{% endblock %}</title>
+    <!-- Підключаємо наш окремий CSS файл -->
+    <link rel="stylesheet" href="{% static 'law_faculty/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <a href="{% url 'home' %}">Головна</a>
+                <a href="{% url 'program_list' %}">Спеціальності</a>
+                <a href="{% url 'department_list' %}">Кафедри та викладачі</a>
+            </nav>
+            <hr>
+        </header>
+
+        <main>
+            {% block content %}
+            {% endblock %}
+        </main>
+    </div>
+</body>
+</html>
