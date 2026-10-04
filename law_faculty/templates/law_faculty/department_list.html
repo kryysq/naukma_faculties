@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Кафедри - Факультет правничих наук{% endblock %}
+
+{% block content %}
+<h1>Кафедри факультету</h1>
+<ul>
+    {% for department in departments %}
+        <li>
+            <h2>{{ department.name }}</h2>
+            <p><strong>Завідувач:</strong> {{ department.head }}</p>
+            
+            <h3>Викладачі кафедри:</h3>
+            <ul>
+                {% for teacher in department.teachers.all %}
+                    <li>{{ teacher.name }} — {{ teacher.position }}, {{ teacher.degree }}</li>
+                {% empty %}
+                    <li>На цій кафедрі поки немає викладачів.</li>
+                {% endfor %}
+            </ul>
+        </li>
+        <hr>
+    {% empty %}
+        <li>Поки що немає доступних кафедр.</li>
+    {% endfor %}
+</ul>
+{% endblock %}
