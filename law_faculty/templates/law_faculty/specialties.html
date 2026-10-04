@@ -1,0 +1,12 @@
+{% extends "law_faculty/base.html" %}
+
+{% block title %}Спеціальності - Факультет правничих наук{% endblock %}
+
+{% block content %}
+    <h1>Спеціальності</h1>
+    <ul>
+        {% for specialty in specialties %}
+            <li>{{ specialty.name }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

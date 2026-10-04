@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Освітні програми - Факультет правничих наук{% endblock %}
+
+{% block content %}
+    <h1>Освітні програми</h1>
+    <ul>
+        {% for program in programs %}
+            <li>{{ program.name }}</li>
+        {% empty %}
+            <li>Поки що немає доступних програм.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
