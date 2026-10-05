@@ -6,7 +6,9 @@
     <h1>Освітні програми</h1>
     <ul>
         {% for program in programs %}
-            <li>{{ program.name }}</li>
+            <li>
+                <a href="{% url 'program_detail' program.id %}">{{ program.name }}</a>
+            </li>
         {% empty %}
             <li>Поки що немає доступних програм.</li>
         {% endfor %}

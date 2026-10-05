@@ -1,0 +1,23 @@
+{% {% extends "base.html" %}%}
+
+{% block content %}
+<div style="max-width: 800px; margin: 0 auto; padding: 20px;">
+    <h1>Спеціальність: {{ specialty.code }} — {{ specialty.name }}</h1>
+    
+    <p><strong>Випускова кафедра:</strong> {{ specialty.department.name }}</p>
+    
+    <h3>Повний опис програми:</h3>
+    <p>{{ specialty.description }}</p>
+    
+    <h3>Координатор набору:</h3>
+    <p>{{ specialty.coordinator_name }} (Контакт: <a href="mailto:{{ specialty.coordinator_contact }}">{{ specialty.coordinator_contact }}</a>)</p>
+    
+    <h3>Дисципліни програми:</h3>
+    <p>{{ specialty.disciplines }}</p>
+    
+    <br>
+    <a href="{% url 'program_list' %}" class="btn btn-secondary">← Назад до списку спеціальностей</a>
+
+</div>
+   
+{% endblock %}
