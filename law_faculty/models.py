@@ -49,3 +49,13 @@ class Specialty(models.Model):
     def short_description(self):
         words = self.description.split()
         return " ".join(words[:50]) + ("..." if len(words) > 50 else "")
+
+class ExchangeProgram(models.Model):
+    university = models.CharField(max_length=255, verbose_name="Університет")
+    languages = models.CharField(max_length=255, verbose_name="Мови навчання")
+    slots = models.CharField(max_length=50, verbose_name="Кількість місць")
+    deadline = models.DateField(verbose_name="Дедлайн подачі")
+    description = models.TextField(verbose_name="Опис")
+
+    def __str__(self):
+        return self.university
