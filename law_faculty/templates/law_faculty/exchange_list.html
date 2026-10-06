@@ -5,7 +5,7 @@
 {% block content %}
     <h1>Програми академічного обміну</h1>
     
-    <table>
+    <table class="styled-table">
         <thead>
             <tr>
                 <th>Університет</th>
@@ -25,7 +25,7 @@
                     <td>{{ program.languages }}</td>
                     <td>{{ program.slots }}</td>
                     <td>{{ program.deadline|date:"d.m.Y" }}</td>
-                    <td>{{ program.description }}</td>
+    
                     <td>
                         {% if program.is_active %}
                             <span style="color: green; font-weight: bold;">Прийом триває</span>

@@ -9,11 +9,11 @@ def specialty_list_view(request):
     return render(request, 'law_faculty/specialties.html', {'specialties': specialties})
 
 def program_list_view(request):
-    programs = Specialty.objects.all()
+    programs = Program.objects.all()
     return render(request, 'law_faculty/program_list.html', {'programs': programs})
 
 def program_detail_view(request, pk):
-    program = get_object_or_404(Specialty, pk=pk)
+    program = get_object_or_404(Program, pk=pk)
     return render(request, 'law_faculty/program_detail.html', {'program': program})
 
 def department_list_view(request):
@@ -27,3 +27,7 @@ def department_detail_view(request, pk):
 def exchange_list_view(request):
     programs = ExchangeProgram.objects.all()
     return render(request, 'law_faculty/exchange_list.html', {'programs': programs})
+
+def teacher_list_view(request):
+    teachers = Teacher.objects.all()
+    return render(request, 'law_faculty/teacher_list.html', {'teachers': teachers})

@@ -6,6 +6,7 @@ admin.site.register(Program)
 admin.site.register(Teacher)
 admin.site.register(Specialty)
 
+
 @admin.register(ExchangeProgram)
 class ExchangeProgramAdmin(admin.ModelAdmin):
     list_display = ('university', 'languages', 'slots', 'deadline')

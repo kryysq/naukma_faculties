@@ -115,3 +115,76 @@ footer {
     margin-top: 3rem;
     font-size: 0.9rem;
 }
+
+table.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+table.styled-table th, 
+table.styled-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+    vertical-align: middle;
+}
+
+table.styled-table th {
+    background-color: #0056b3;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 0.05em;
+}
+
+table.styled-table tbody tr:hover {
+    background-color: #f1f5f9;
+}
+
+table.styled-table tbody tr:last-of-type td {
+    border-bottom: none;
+}
+
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.styled-table th, 
+.styled-table td {
+    padding: 12px 10px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+    vertical-align: top; /* Щоб текст вирівнювався по верху, якщо він різної довжини */
+}
+
+.styled-table th {
+    background-color: #0056b3;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: 13px;
+}
+
+/* Обмежуємо ширину довгих колонок, щоб вони не розтягували сторінку */
+.styled-table td:last-child {
+    max-width: 300px; 
+    word-wrap: break-word;
+}
+
+.styled-table tbody tr:hover {
+    background-color: #f1f5f9;
+}
