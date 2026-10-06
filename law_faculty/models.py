@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 class Department(models.Model):
     name = models.CharField(max_length=255, verbose_name="Назва кафедри")
@@ -53,9 +54,15 @@ class Specialty(models.Model):
 class ExchangeProgram(models.Model):
     university = models.CharField(max_length=255, verbose_name="Університет")
     languages = models.CharField(max_length=255, verbose_name="Мови навчання")
-    slots = models.CharField(max_length=50, verbose_name="Кількість місць")
+    slots = models.PositiveIntegerField(verbose_name="Кількість місць", default=1)
     deadline = models.DateField(verbose_name="Дедлайн подачі")
     description = models.TextField(verbose_name="Опис")
+    country = models.CharField(max_length=100, verbose_name="Країна", blank=True, null=True)
 
     def __str__(self):
-        return self.university
+        return f"{self.university} ({self.country})"
+
+    @property
+    def is_active(self):
+        #Повертає True, якщо дедлайн ще не минув (прийом триває)
+        return self.deadline >= timezone.now().date()

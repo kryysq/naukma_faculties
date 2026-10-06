@@ -9,9 +9,11 @@
         <thead>
             <tr style="background-color: #f2f2f2;">
                 <th>Університет</th>
+                <th>Країна</th>
                 <th>Мови навчання</th>
                 <th>Кількість місць</th>
                 <th>Дедлайн</th>
+                <th>Статус</th>
                 <th>Опис</th>
             </tr>
         </thead>
@@ -19,14 +21,22 @@
             {% for program in programs %}
                 <tr>
                     <td><strong>{{ program.university }}</strong></td>
+                    <td>{{ program.country }}</td>
                     <td>{{ program.languages }}</td>
                     <td>{{ program.slots }}</td>
                     <td>{{ program.deadline|date:"d.m.Y" }}</td>
                     <td>{{ program.description }}</td>
+                    <td>
+                        {% if program.is_active %}
+                            <span style="color: green; font-weight: bold;">Прийом триває</span>
+                        {% else %}
+                            <span style="color: red; font-weight: bold;">Прийом завершено</span>
+                        {% endif %}
+                    </td>
                 </tr>
             {% empty %}
                 <tr>
-                    <td colspan="5">Поки що немає доступних програм обміну.</td>
+                    <td colspan="7">Поки що немає доступних програм обміну.</td>
                 </tr>
             {% endfor %}
         </tbody>
