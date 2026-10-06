@@ -1,23 +1,28 @@
 {% {% extends "base.html" %}%}
 
-{% block content %}
-<div style="max-width: 800px; margin: 0 auto; padding: 20px;">
-    <h1>Спеціальність: {{ specialty.code }} — {{ specialty.name }}</h1>
-    
-    <p><strong>Випускова кафедра:</strong> {{ specialty.department.name }}</p>
-    
-    <h3>Повний опис програми:</h3>
-    <p>{{ specialty.description }}</p>
-    
-    <h3>Координатор набору:</h3>
-    <p>{{ specialty.coordinator_name }} (Контакт: <a href="mailto:{{ specialty.coordinator_contact }}">{{ specialty.coordinator_contact }}</a>)</p>
-    
-    <h3>Дисципліни програми:</h3>
-    <p>{{ specialty.disciplines }}</p>
-    
-    <br>
-    <a href="{% url 'program_list' %}" class="btn btn-secondary">← Назад до списку спеціальностей</a>
+{% block title %}{{ program.name }} - Спеціальність{% endblock %}
 
-</div>
+{% block content %}
+<h1>{{ program.name }}</h1>
+    
+    <div class="card">
+        <p><strong>Код спеціальності:</strong> {{ program.code }}</p>
+        <p><strong>Випускова кафедра:</strong> <a href="{% url 'department_detail' program.department.id %}">{{ program.department.name }}</a></p>
+        
+        <h3>Повний опис</h3>
+        <p>{{ program.description }}</p>
+        
+        <h3>Список дисциплін</h3>
+        <div style="background: #F8FAFC; padding: 1rem; border-radius: 6px; border: 1px solid var(--border-color);">
+            {{ program.disciplines|linebreaks }}
+        </div>
+
+        <h3 style="margin-top: 1.5rem;">Координація набору</h3>
+        <p><strong>Імʼя:</strong> {{ program.coordinator_name }}</p>
+        <p><strong>Контакт:</strong> {{ program.coordinator_contact }}</p>
+    </div>
+
+    <p><a href="{% url 'program_list' %}" style="color: var(--accent-color); text-decoration: none;">&larr; Назад до списку спеціальностей</a></p>
+{% endblock %}
    
 {% endblock %}

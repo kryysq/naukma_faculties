@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}{{ department.name }} - Кафедра{% endblock %}
+
+{% block content %}
+    <h1>{{ department.name }}</h1>
+    
+    <div class="card">
+        <p><strong>Завідувач кафедри:</strong> {{ department.head }}</p>
+        
+        <h3 style="margin-top: 1.5rem;">Викладацький склад</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Імʼя викладача</th>
+                    <th>Посада</th>
+                    <th>Науковий ступінь</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for teacher in department.teachers.all %}
+                    <tr>
+                        <td><strong>{{ teacher.name }}</strong></td>
+                        <td>{{ teacher.position }}</td>
+                        <td>{{ teacher.degree }}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="3">Викладачів на цій кафедрі поки не вказано.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <p><a href="{% url 'department_list' %}" style="color: var(--accent-color); text-decoration: none;">&larr; Назад до списку кафедр</a></p>
+{% endblock %}

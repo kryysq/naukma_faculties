@@ -10,18 +10,23 @@
     <div class="container">
         <header>
             <nav>
+                <a href="{% url 'home' %}"><strong>ФПрН НаУКМА</strong></a>
                 <a href="{% url 'home' %}">Головна</a>
                 <a href="{% url 'program_list' %}">Спеціальності</a>
                 <a href="{% url 'department_list' %}">Кафедри та викладачі</a>
-                <a href="{% url 'exchange_list' %}">Академічний обмін</a>
+                <a href="{% url 'exchange_list' %}">Академ. обмін</a>
             </nav>
-            <hr>
         </header>
 
         <main>
             {% block content %}
             {% endblock %}
         </main>
+
+        <footer>
+        <p>&copy; 2026 Факультет правничих наук Національного університету «Києво-Могилянська академія»</p>
+    </footer>
+
     </div>
 </body>
 </html>

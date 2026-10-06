@@ -4,13 +4,15 @@
 
 {% block content %}
     <h1>Освітні програми</h1>
-    <ul>
+
         {% for program in programs %}
-            <li>
-                <a href="{% url 'program_detail' program.id %}">{{ program.name }}</a>
-            </li>
+            <div class="card">
+            <h3><a href="{% url 'program_detail' program.id %}" style="color: var(--primary-color); text-decoration: none;">{{ program.name }} (Код: {{ program.code }})</a></h3>
+            <p><strong>Короткий опис:</strong> {{ program.description|truncatewords:50 }}</p>
+            <p><strong>Координатор набору:</strong> {{ program.coordinator_name }} (<em>{{ program.coordinator_contact }}</em>)</p>
+            <p><strong>Випускова кафедра:</strong> {{ program.department.name }}</p>
+        </div>
         {% empty %}
-            <li>Поки що немає доступних програм.</li>
+           <div class="card">Поки що немає доступних програм.</div>
         {% endfor %}
-    </ul>
 {% endblock %}

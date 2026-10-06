@@ -5,9 +5,9 @@
 {% block content %}
     <h1>Програми академічного обміну</h1>
     
-    <table border="1" cellpadding="10" style="margin-top: 20px; border-collapse: collapse; width: 100%;">
+    <table>
         <thead>
-            <tr style="background-color: #f2f2f2;">
+            <tr>
                 <th>Університет</th>
                 <th>Країна</th>
                 <th>Мови навчання</th>
@@ -33,6 +33,7 @@
                             <span style="color: red; font-weight: bold;">Прийом завершено</span>
                         {% endif %}
                     </td>
+                <td> {{program.description}} </td>
                 </tr>
             {% empty %}
                 <tr>

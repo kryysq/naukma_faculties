@@ -52,12 +52,12 @@ class Specialty(models.Model):
         return " ".join(words[:50]) + ("..." if len(words) > 50 else "")
 
 class ExchangeProgram(models.Model):
-    university = models.CharField(max_length=255, verbose_name="Університет")
-    languages = models.CharField(max_length=255, verbose_name="Мови навчання")
-    slots = models.PositiveIntegerField(verbose_name="Кількість місць", default=1)
-    deadline = models.DateField(verbose_name="Дедлайн подачі")
-    description = models.TextField(verbose_name="Опис")
-    country = models.CharField(max_length=100, verbose_name="Країна", blank=True, null=True)
+    university = models.CharField(max_length=200)
+    languages = models.CharField(max_length=200)
+    slots = models.CharField(max_length=50)
+    deadline = models.DateField()
+    description = models.TextField(blank=True, null=True)
+    country = models.CharField(max_length=100, blank=True, null=True)
 
     def __str__(self):
         return f"{self.university} ({self.country})"

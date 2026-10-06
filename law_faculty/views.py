@@ -20,6 +20,10 @@ def department_list_view(request):
     departments = Department.objects.all()
     return render(request, 'law_faculty/department_list.html', {'departments': departments})
 
+def department_detail_view(request, pk):
+    department = get_object_or_404(Department, pk=pk)
+    return render(request, 'law_faculty/department_detail.html', {'department': department})
+
 def exchange_list_view(request):
     programs = ExchangeProgram.objects.all()
     return render(request, 'law_faculty/exchange_list.html', {'programs': programs})

@@ -4,24 +4,20 @@
 
 {% block content %}
 <h1>Кафедри факультету</h1>
-<ul>
+
     {% for department in departments %}
-        <li>
-            <h2>{{ department.name }}</h2>
-            <p><strong>Завідувач:</strong> {{ department.head }}</p>
-            
-            <h3>Викладачі кафедри:</h3>
-            <ul>
-                {% for teacher in department.teachers.all %}
-                    <li>{{ teacher.name }} — {{ teacher.position }}, {{ teacher.degree }}</li>
+       <div class="card">
+            <h3><a href="{% url 'department_detail' department.id %}" style="color: var(--primary-color); text-decoration: none;">{{ department.name }}</a></h3>
+            <p><strong>Завідувач кафедри:</strong> {{ department.head }}</p>
+            <p><strong>Випускові спеціальності:</strong> 
+                {% for spec in department.specialties.all %}
+                    <a href="{% url 'program_detail' spec.id %}">{{ spec.name }}</a>{% if not forloop.last %}, {% endif %}
                 {% empty %}
-                    <li>На цій кафедрі поки немає викладачів.</li>
+                    Немає прив'язаних спеціальностей
                 {% endfor %}
-            </ul>
-        </li>
-        <hr>
+            </p>
+        </div>
     {% empty %}
-        <li>Поки що немає доступних кафедр.</li>
+        <div class="card">Поки що немає доступних кафедр.</div>
     {% endfor %}
-</ul>
 {% endblock %}
